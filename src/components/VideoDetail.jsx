@@ -49,10 +49,16 @@ export const VideoDetail = () => {
                   color="#fff"
                 >
                   {channelTitle}
-                  <CheckCircle sx={{ fontSize: '12px', color: 'gray', ml: '5px' }} />
+                  <CheckCircle
+                    sx={{ fontSize: "12px", color: "gray", ml: "5px" }}
+                  />
                 </Typography>
               </Link>
-              
+              <Stack>
+                <Typography variant="body1" sx={{ opacity: 0.7 }}>
+                  {parseInt(viewCount).toLocaleString()} views
+                </Typography>
+              </Stack>
             </Stack>
           </Box>
         </Box>
