@@ -10,14 +10,13 @@ export const VideoDetail = () => {
   const { id } = useParams();
   const [videoDetail, setVideoDetail] = useState(null);
 
-  
   useEffect(() => {
     fetchFromAPI(`videos?part=snippet,statistics&id=${id}`).then((data) =>
-    setVideoDetail(data.items[0])
+      setVideoDetail(data.items[0])
     );
   }, [id]);
-  
-  if(!videoDetail?.snippet) return 'Loading...';
+
+  if (!videoDetail?.snippet) return "Loading...";
 
   const {
     snippet: { title, channelId, channelTitle },
@@ -37,6 +36,24 @@ export const VideoDetail = () => {
             <Typography color="#fff" variant="h5" fontWeight="bold" p={2}>
               {title}
             </Typography>
+            <Stack
+              direction="row"
+              justifyContent="space-between"
+              sx={{ color: "#fff" }}
+              py={1}
+              px={2}
+            >
+              <Link to={`/channel/${channelId}`}>
+                <Typography
+                  variant={{ sm: "subtitle1", md: "h6" }}
+                  color="#fff"
+                >
+                  {channelTitle}
+                  <CheckCircle sx={{ fontSize: '12px', color: 'gray', ml: '5px' }} />
+                </Typography>
+              </Link>
+              
+            </Stack>
           </Box>
         </Box>
       </Stack>
