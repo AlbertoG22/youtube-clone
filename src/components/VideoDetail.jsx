@@ -17,6 +17,8 @@ export const VideoDetail = () => {
     );
   }, [id]);
   
+  if(!videoDetail?.snippet) return 'Loading...';
+
   const {
     snippet: { title, channelId, channelTitle },
     statistics: { viewCount, likeCount },
